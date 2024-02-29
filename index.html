@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indice de massa Corporal</title>
+</head>
+
+<body>
+
+    <style>
+        :root {
+            --primary-color: #393984;
+            --secondary-color: #FC7F81;
+            --tertiary-color: #F5EFFF;
+            --quaternary-color: #CDC1FF;
+            --quinary-color: #A594F9;
+        }
+
+        body {
+            background: url(https://i.pinimg.com/originals/da/27/01/da270118ba48e395912c411dcc813149.gif);
+            background-position: center;
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 50px;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .calc {
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            display: flex;
+            background-color: var(--quinary-color);
+        }
+
+        .calc-body {
+            display: flex;
+        }
+
+
+        label {
+            background-color: var(--primary-color);
+            color: var(--tertiary-color);
+        }
+
+        h1 {
+            margin: 5px;
+            width: auto;
+            background-color: var(--primary-color);
+            color: var(--tertiary-color);
+        }
+
+        p {
+            margin: 5px;
+            width: auto;
+            background-color: var(--primary-color);
+            color: var(--tertiary-color);
+        }
+
+        span {
+            color: var(--secondary-color);
+        }
+
+        input {
+            width: 500px;
+        }
+
+        button {
+            margin: 5px;
+            margin-left: 175px;
+            width: 150px;
+            height: 50px;
+            color: var(--tertiary-color);
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500px;
+            border: solid 2px var(--tertiary-color);
+            background-color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        button:hover {
+            color: var(--primary-color);
+            background-color: var(--tertiary-color);
+        }
+    </style>
+
+    <div class="calc">
+
+        <h1>Calculadora de Indice de Massa Corporal</h1>
+
+        <div class="calc-body">
+            <form action="">
+                <label for="altura"> Digite sua altura: </label>
+                <br>
+                <input type="number" name="" id="altura">
+                <br>
+
+                <label for="peso"> Digite seu peso, em (KG): </label>
+                <br>
+                <input type="number" name="" id="peso" maxlength="5">
+                <br>
+
+                <button onclick="calcularImc()">Calcular IMC</button>
+            </form>
+        </div>
+        <div class="calc-result">
+            <p>Seu indice de massa corporal é: <span id="resultado"> </span> </p>
+            <p>Sua classificação é: <span id="classificacao"></span></p>
+
+        </div>
+    </div>
+
+    </div>
+
+
+    <script>
+
+        function calcularImc() {
+
+            const peso = document.getElementById("peso").value;
+            const altura = document.getElementById("altura").value;
+            const imc = peso / (altura ** 2);
+            var classificacao = "";
+
+            document.getElementById("resultado").textContent = imc.toFixed(2);
+
+            if (imc <= 16.9) {
+                classificacao = "Muito abaixo do peso";
+            } else if (imc <= 18.4) {
+                u
+                classificacao = "Abaixo do peso";
+            }
+            else if (imc <= 24.9) {
+                classificacao = "Peso normal";
+            }
+            else if (imc <= 29.9) {
+                classificacao = "Acima do peso";
+            }
+            else if (imc <= 34.9) {
+                classificacao = "Obesidade Grau I";
+            }
+            else if (imc <= 40) {
+                classificacao = "Obesidade Grau II";
+            }
+            else {
+                classificacao = "Obesidade Grau III";
+            }
+
+            document.getElementById("classificacao").textContent = classificacao;
+
+        }
+    </script>
+
+</body>
+
+
+</html>
